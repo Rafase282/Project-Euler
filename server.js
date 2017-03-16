@@ -12,7 +12,7 @@ const express = require('express');
 const path = require('path');
 const app = express();
 const bodyParser = require('body-parser');
-const api = require('./controllers/problems');
+const api = require('./controllers/api');
 
 /* Configure app to use bodyParser()
  * this will let us get the data from a POST

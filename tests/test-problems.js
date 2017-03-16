@@ -6,7 +6,7 @@
 const chai = require('chai');
 const chaiHttp = require('chai-http');
 const server = require('../server');
-const api = require('../controllers/problems');
+const api = require('../controllers/api');
 const expect = require('expect');
 chai.should();
 chai.use(chaiHttp);
@@ -46,11 +46,14 @@ describe('Test for server response\n', () => {
 });
 
 describe('Test Project Euler problems\n', () => {
-  it('1. Gives the total of the sum of multiples of 3 and 5', (done) => {
-    const res = api.mult3y5(10);
-    expect(res)
-      .toBeA('number', 'The result should be a number.')
-      .toEqual(23, 'The result should be 23.');
-    done();
+  describe('Problem 1 ~ 10', () => {
+    const problem = require('../problems/1-10');
+    it('1. Gives the total of the sum of multiples of 3 and 5', (done) => {
+      const res = problem.mult3y5(10);
+      expect(res)
+        .toBeA('number', 'The result should be a number.')
+        .toEqual(23, 'The result should be 23.');
+      done();
+    });
   });
 });
