@@ -19,6 +19,7 @@ describe('Test for server response\n', () => {
       .get('/')
       .end((err, res) => {
         res.should.have.status(200);
+        res.should.have.header('content-type', 'text/html; charset=UTF-8');
         if (err) throw err;
         done();
       });
