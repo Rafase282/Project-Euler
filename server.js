@@ -30,14 +30,9 @@ app.use((req, res, next) => {
   next();
 });
 
-//app.use('/', express.static(path.join(__dirname, 'docs')));
-// Serves swagger UI at the root.
-app.get('/', (req, res) => res.json({
-  message: "Welcome, here you can test solutions to Project-Euler!"
-}));
-
-app.route('/problem/')
-  .post(api.postData)
+app.use('/', express.static(path.join(__dirname, 'views')));
+app.route('/problems/')
+  .post(api.postData);
 
 // CONFIGURE & START THE SERVER
 // =============================================================================
