@@ -23,7 +23,6 @@ describe('Test for server response\n', () => {
   });
   it('POST /problem: It should return an object with info and results for the problem.', (done) => {
     const problem = {
-      title: 'Multiples of 3 & 5',
       id: 1,
       input: 100
     }
@@ -47,7 +46,7 @@ describe('Test for server response\n', () => {
 });
 
 describe('Test Project Euler problems\n', () => {
-  it('Gives the total of the sum of multiples of 3 and 5', (done) => {
+  it('1. Gives the total of the sum of multiples of 3 and 5', (done) => {
     const res = api.mult3y5(10);
     expect(res)
       .toBeA('number', 'The result should be a number.')
