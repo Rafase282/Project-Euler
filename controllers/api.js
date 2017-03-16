@@ -1,7 +1,6 @@
 'use strict';
 
 const aux = require('./selector');
-const set1 = require('../problems/1-10');
 
  /**
  * Returns recommendations
@@ -11,8 +10,23 @@ const set1 = require('../problems/1-10');
  * @return {Object} problem
  */
 exports.postData = (req, res) => {
-  const problem = aux.selector(req.body.id);
-  problem.input = req.body.input;
-  problem.output = set1.mult3y5(problem.input);
-  res.status(200).json(problem);
+  const id = req.body.id;
+  const input = req.body.input;
+  switch (true) {
+    case(id === '' || input === ''):
+      res.status(400).json({error: 'Make sure you provided a number ID and input for the problem.'});
+      break;
+    case(id < 1 || id > 1):
+      res.status(404).json({error: 'Problem ID not found.'});
+      break;
+    case(isNaN(id)):
+      res.status(400).json({error: 'Wrong ID type.'});
+      break;
+    default:
+      let problem = aux.selector(parseInt(id));
+      problem.id = id;
+      problem.input = req.body.input;
+      problem.output = problem.solve(problem.input);
+      res.status(200).json(problem);
+  }
 };

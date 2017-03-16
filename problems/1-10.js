@@ -9,6 +9,13 @@
  */
 const mult3y5 = exports.mult3y5 = (limit) => {
   let total = 0;
-  total = limit;
+  for (let i = 0; i < limit; i++) {
+    total = total + multOf(i, 3) + multOf(i, 5);
+  }
   return total;
+}
+
+function multOf(num, mult) {
+  if (num % mult === 0) return num;
+  return 0;
 }

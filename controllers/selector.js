@@ -1,5 +1,6 @@
 'use strict';
 
+const set1 = require('../problems/1-10');
 /**
  * Provides the problem description based on ID
  * @param {Number} limit
@@ -11,7 +12,7 @@ const selector = exports.selector = (id) => {
     case 1:
       info = {
         title: 'Multiples of 3 & 5',
-        id: 1
+        solve: set1.mult3y5
       }
       break;
     default:
