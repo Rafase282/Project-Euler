@@ -2,7 +2,7 @@
 
 const aux = require('./selector');
 
- /**
+/**
  * Returns recommendations
  * Accessed at POST /problems/
  * @param {Object} req
@@ -10,8 +10,8 @@ const aux = require('./selector');
  * @return {Object} problem
  */
 exports.postData = (req, res) => {
-  const id = req.body.id;
   const input = req.body.input;
+  let id = req.body.id;
   switch (true) {
     case(id === '' || input === ''):
       res.status(400).json({error: 'Make sure you provided a number ID and input for the problem.'});
@@ -23,10 +23,13 @@ exports.postData = (req, res) => {
       res.status(400).json({error: 'Wrong ID type.'});
       break;
     default:
-      let problem = aux.selector(parseInt(id));
-      problem.id = id;
-      problem.input = req.body.input;
-      problem.output = problem.solve(problem.input);
-      res.status(200).json(problem);
+      {
+        id = Number(req.body.id);
+        const problem = aux.selector(id);
+        problem.id = id;
+        problem.input = input;
+        problem.output = problem.solve(problem.input);
+        res.status(200).json(problem);
+      }
   }
 };

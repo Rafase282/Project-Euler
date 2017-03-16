@@ -11,7 +11,7 @@ const selector = exports.selector = (id) => {
   switch (id) {
     case 1:
       info = {
-        title: 'Multiples of 3 & 5',
+        title: 'Multiples of 3 and 5',
         solve: set1.mult3y5
       }
       break;

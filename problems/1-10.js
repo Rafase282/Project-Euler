@@ -10,12 +10,7 @@
 const mult3y5 = exports.mult3y5 = (limit) => {
   let total = 0;
   for (let i = 0; i < limit; i++) {
-    total = total + multOf(i, 3) + multOf(i, 5);
+    if (i % 3 === 0 || i % 5 === 0) total += i;
   }
   return total;
-}
-
-function multOf(num, mult) {
-  if (num % mult === 0) return num;
-  return 0;
 }
