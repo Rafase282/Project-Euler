@@ -51,10 +51,10 @@ describe('Test for server response\n', () => {
 describe('Test Project Euler problems\n', () => {
   describe('Problem 1 ~ 10', () => {
     it('1. Gives the total of the sum of multiples of 3 and 5', (done) => {
-      const res = set1.mult3y5(10);
+      const res = set1.mult3y5(1000);
       expect(res)
         .toBeA('number', 'The result should be a number.')
-        .toEqual(23, 'The result should be 23.');
+        .toEqual(233168, 'The result should be 23.');
       done();
     });
   });
